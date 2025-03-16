@@ -14,7 +14,7 @@ def get_all_files(directory_path):
                 full_path = os.path.join(root, file)
                 python_files.append(full_path)
     return python_files
-
+#gay ass niggers
 
 # Opens the file and returns the content inside
 def read_file_content(file):
