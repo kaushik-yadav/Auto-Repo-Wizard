@@ -1,13 +1,22 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 import os
-
+from fastapi.middleware.cors import CORSMiddleware
 # If you need to import local modules
 from .repo_manager import clone_repo
 from .file_manager import get_all_files
 from .llm import explain_code
 
 app = FastAPI()
+
+# Add CORS middleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # For development, "*" allows all origins. For production, list allowed origins.
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # Pydantic model to define the body of our POST request
 class CloneRequest(BaseModel):
