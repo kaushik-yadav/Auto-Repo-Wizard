@@ -103,6 +103,5 @@ Auto-Repo-Wizard/
 ## License
 This project is licensed under the MIT License. Contributions are welcome—please feel free to submit issues or pull requests on [GitHub](https://github.com/YOUR_GITHUB_USERNAME/Auto-Repo-Wizard).
 
----
 
 README should help users understand both the backend and the newly integrated extension components, as well as guide them through installation, usage, and extension management. Enjoy using Auto-Repo-Wizard!
