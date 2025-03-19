@@ -295,7 +295,7 @@ function showPathDialog() {
     "Content-Type": "application/json",
   },
   body: JSON.stringify({
-    url: window.location.href + ".git",
+    url: window.location.href.replace(/\/$/, "") + ".git",
     path: path,
     explain: withExplanation,
   }),
