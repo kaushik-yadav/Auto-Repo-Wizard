@@ -1,8 +1,9 @@
 import os
-from file_manager import get_all_files
-from repo_manager import clone_repo
-from llm import explain_code
-from config import PATH, URL
+from auto_repo_wizard.repo_manager import clone_repo
+from auto_repo_wizard.file_manager import get_all_files
+from auto_repo_wizard.llm import explain_code
+from auto_repo_wizard.config import PATH, URL
+
 
 
 if __name__ == "__main__":

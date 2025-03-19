@@ -1,6 +1,6 @@
 from google import genai
-from file_manager import read_file_content, write_clean_response
-from config import GEMINI_API_KEY
+from auto_repo_wizard.file_manager import read_file_content, write_clean_response
+from auto_repo_wizard.config import GEMINI_API_KEY
 
 client = genai.Client(api_key=GEMINI_API_KEY)
 
