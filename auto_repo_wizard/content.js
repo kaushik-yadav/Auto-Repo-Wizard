@@ -283,9 +283,42 @@ function showPathDialog() {
     }
     errorMessage.style.display = 'none';
     const withExplanation = cloneOption === 'explain';
-    console.log('URL:', window.location.href + '.git');
-    console.log('Destination:', path);
-    console.log('With Explanation:', withExplanation);
+
+
+  // Sends a POST request to http://127.0.0.1:8000/clone.
+  //Passes the URL, destination path, and explanation choice in the body.
+  //Alerts the user about success/failure.
+
+  fetch("http://127.0.0.1:8000/clone", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({
+    url: window.location.href + ".git",
+    path: path,
+    explain: withExplanation,
+  }),
+})
+  .then((response) => {
+    if (!response.ok) {
+      return response.json().then((data) => {
+        throw new Error(data.detail || "Error cloning repository");
+      });
+    }
+    return response.json();
+  })
+  .then((data) => {
+    alert(
+      `Clone successful!\nExplanation was ${
+        data.explanation ? "enabled" : "disabled"
+      }.`
+    );
+  })
+  .catch((err) => {
+    alert("Failed to clone: " + err.message);
+  });
+
     removeModal();
   };
 
