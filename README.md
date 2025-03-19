@@ -15,32 +15,34 @@ Auto-Repo-Wizard is a comprehensive tool designed to automate cloning a GitHub r
 
 ### Backend Setup
 1. **Clone the Repository:**
-   
+   ```sh
    git clone https://github.com/YOUR_GITHUB_USERNAME/Auto-Repo-Wizard.git
    cd Auto-Repo-Wizard
+   ```
 
 2. **Create and Activate a Virtual Environment:**
-   
+   ```sh
    python -m venv venv
    # On macOS/Linux:
    source venv/bin/activate
    # On Windows:
    venv\Scripts\activate
+   ```
 
 3. **Install Dependencies:**
+   ```sh
    pip install -r requirements.txt
-
+   ```
 
 4. **Configuration:**
    - Create a `.env` file in the project root with the following content:
-    
+     ```ini
      GEMINI_API_KEY=your_gemini_api_key_here
      LOCAL_PATH=your_local_destination_path
      REPO_URL=your_default_repository_url
-
+     ```
      You can obtain an API key from Google AI Studio after signing in.
-    
-   - Replace the placeholders with your actual API key and paths. (See [config.py] for how these values are used.)
+   - Replace the placeholders with your actual API key and paths. (See [config.py]for how these values are used.)
 
 5. **Run the Backend Service:**
    ```sh
@@ -103,5 +105,5 @@ Auto-Repo-Wizard/
 ## License
 This project is licensed under the MIT License. Contributions are welcome—please feel free to submit issues or pull requests on [GitHub](https://github.com/YOUR_GITHUB_USERNAME/Auto-Repo-Wizard).
 
-
+---
 README should help users understand both the backend and the newly integrated extension components, as well as guide them through installation, usage, and extension management. Enjoy using Auto-Repo-Wizard!
