@@ -1,6 +1,7 @@
 from google import genai
-from file_manager import read_file_content, write_clean_response
-from config import GEMINI_API_KEY
+
+from .config import GEMINI_API_KEY
+from .file_manager import read_file_content, write_clean_response
 
 client = genai.Client(api_key=GEMINI_API_KEY)
 

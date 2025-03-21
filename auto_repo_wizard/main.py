@@ -1,9 +1,9 @@
 import os
-from file_manager import get_all_files
-from repo_manager import clone_repo
-from llm import explain_code
-from config import PATH, URL
 
+from .config import PATH, URL
+from .file_manager import get_all_files
+from .llm import explain_code
+from .repo_manager import clone_repo
 
 if __name__ == "__main__":
     print("--Cloning the repo")

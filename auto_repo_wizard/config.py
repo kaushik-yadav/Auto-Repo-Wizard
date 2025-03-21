@@ -1,11 +1,11 @@
 import os
+
 from dotenv import load_dotenv
 
+# Load environment variables from a .env file into the environment.
 load_dotenv()
 
-# API Key for gemini flash 2.0
+# Setting the env variables so that other files can easily import them
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
-# Path where you want the repo to be cloned
 PATH = os.getenv("LOCAL_PATH")
-# URL of the repository that you want to clone
 URL = os.getenv("REPO_URL")
