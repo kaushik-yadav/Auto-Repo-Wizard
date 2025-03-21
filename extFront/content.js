@@ -16,10 +16,11 @@ function createCloneButton() {
   `;
 
   Object.assign(btn.style, {
-    background: '#2ea44f',
+
+    background: '#248a40',
     color: 'white',
-    padding: '6px 16px',
-    borderRadius: '6px',
+    padding: '5px 20px',
+    borderRadius: '5px',
     border: '1px solid rgba(27,31,35,.15)',
     cursor: 'pointer',
     fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
@@ -27,7 +28,8 @@ function createCloneButton() {
     boxShadow: '0 1px 3px rgba(0,0,0,0.1)',
     display: 'flex',
     alignItems: 'center',
-    marginLeft: '8px',
+    marginLeft: '0%',
+    marginTop:"8%",
     transition: 'filter 0.2s'
   });
 
@@ -41,6 +43,7 @@ function createCloneButton() {
 function createCloneOption(title, description, isSelected, value) {
   const option = document.createElement('div');
   option.style.cssText = `
+  
     flex: 1;
     padding: 12px;
     border: 1px solid #e5e7eb;
@@ -131,7 +134,9 @@ function showPathDialog() {
 
   const dialog = document.createElement('div');
   dialog.style.cssText = `
-    background: white;
+  
+    background: linear-gradient(135deg, #fdfcfb, #e2d1c3);
+
     padding: 20px;
     border-radius: 12px;
     width: 440px;
@@ -290,35 +295,34 @@ function showPathDialog() {
   //Alerts the user about success/failure.
 
   fetch("http://127.0.0.1:8000/clone", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-  },
-  body: JSON.stringify({
-    url: window.location.href.replace(/\/$/, "") + ".git",
-    path: path,
-    explain: withExplanation,
-  }),
-})
-  .then((response) => {
-    if (!response.ok) {
-      return response.json().then((data) => {
-        throw new Error(data.detail || "Error cloning repository");
-      });
-    }
-    return response.json();
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      url: window.location.href.replace(/\/$/, "") + ".git",
+      path: path,
+      explain: withExplanation,
+    }),
   })
-  .then((data) => {
-    alert(
-      `Clone successful!\nExplanation was ${
-        data.explanation ? "enabled" : "disabled"
-      }.`
-    );
-  })
-  .catch((err) => {
-    alert("Failed to clone: " + err.message);
-  });
-
+    .then((response) => {
+      if (!response.ok) {
+        return response.json().then((data) => {
+          throw new Error(data.error || "Unknown error occurred.");
+        });
+      }
+      return response.json();
+    })
+    .then((data) => {
+      if (data.success) {
+        alert("✅ Clone successful!");
+      } else {
+        throw new Error(data.error || "Cloning failed.");
+      }
+    })
+    .catch((error) => {
+      alert(`Clone failed: ${error.message}`);
+    });
     removeModal();
   };
 
